@@ -54,7 +54,7 @@ type EthMultiCaller struct {
 	ContractAddress common.Address
 }
 
-func New(rawurl string) EthMultiCaller {
+func New(rawurl string, multicallContractAddress string) EthMultiCaller {
 	client, err := ethclient.Dial(rawurl)
 	if err != nil {
 		panic(err)
@@ -66,7 +66,7 @@ func New(rawurl string) EthMultiCaller {
 		panic(err)
 	}
 
-	contractAddress := common.HexToAddress("0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696")
+	contractAddress := common.HexToAddress(multicallContractAddress)
 
 	return EthMultiCaller{
 		Signer:          randomSigner(),
